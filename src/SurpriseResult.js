@@ -854,7 +854,7 @@
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Card, Typography, Button } from "antd";
-import Confetti from "react-confetti";
+// import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 
 const { Title, Paragraph } = Typography;
@@ -949,7 +949,7 @@ const SurpriseResult = () => {
     return (
         <div style={styles.container}>
             {/* Confetti disabled on very small screens */}
-            {width > 400 && height > 500 && (
+            {/* {width > 400 && height > 500 && (
                 <Confetti
                     width={width}
                     height={height}
@@ -958,7 +958,7 @@ const SurpriseResult = () => {
                     gravity={0.02}
                     run={true}
                 />
-            )}
+            )} */}
 
             {imageData.map((img, i) => (
                 <img
