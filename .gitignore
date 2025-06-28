@@ -10,7 +10,8 @@
 
 # production
 /build
-
+/public/images
+/public/images-webp
 # misc
 .DS_Store
 .env.local
