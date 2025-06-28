@@ -541,87 +541,247 @@
 // export default SurpriseResult;
 
 
-import React, { useEffect, useState, useRef } from "react";
+// import React, { useEffect, useState, useRef } from "react";
+// import { Card, Typography, Button } from "antd";
+// import Confetti from "react-confetti";
+// import { useWindowSize } from "react-use";
+
+// const { Title, Paragraph } = Typography;
+
+// // Load fewer images to reduce load pressure
+// const collageImages = [
+//     `${process.env.PUBLIC_URL}/images-webp/1.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/2.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/3.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/4.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/5.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/6.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/7.webp`,
+//     `${process.env.PUBLIC_URL}/images-webp/8.webp`
+// ];
+
+
+
+// function SurpriseResult() {
+//     const [showCard, setShowCard] = useState(false);
+//     const [loadedIndexes, setLoadedIndexes] = useState(new Set());
+//     const [imageData, setImageData] = useState([]);
+//     const { width, height } = useWindowSize();
+//     const cardShown = useRef(false);
+
+//     useEffect(() => {
+//         // Position images without overlap in limited set
+//         const containerW = window.innerWidth - 32;
+//         const containerH = window.innerHeight - 32;
+
+//         const imgs = [...collageImages].sort(() => 0.5 - Math.random());
+//         const placed = [], styles = [];
+
+//         imgs.forEach((src, index) => {
+//             if (styles.length >= 6) return; // max 6 images
+
+//             let attempt = 0, topPx, leftPx;
+//             const w = 40 + Math.random() * 60, h = w;
+
+//             do {
+//                 topPx = Math.random() * (containerH - h);
+//                 leftPx = Math.random() * (containerW - w);
+//                 const rect = { top: topPx, left: leftPx, width: w, height: h };
+//                 const overlap = placed.some(r =>
+//                     !(
+//                         r.left + r.width + 10 < rect.left ||
+//                         r.left > rect.left + rect.width + 10 ||
+//                         r.top + r.height + 10 < rect.top ||
+//                         r.top > rect.top + rect.height + 10
+//                     )
+//                 );
+//                 if (!overlap) {
+//                     placed.push(rect);
+//                     styles.push({
+//                         src,
+//                         style: {
+//                             top: `${(topPx / containerH) * 100}%`,
+//                             left: `${(leftPx / containerW) * 100}%`,
+//                             width: `${w}px`,
+//                             transform: `rotate(${Math.random() * 20 - 10}deg)`
+//                         }
+//                     });
+//                     break;
+//                 }
+//                 attempt++;
+//             } while (attempt < 50);
+//         });
+
+//         setImageData(styles);
+//     }, []);
+
+//     useEffect(() => {
+//         if (imageData.length > 0 && loadedIndexes.size === imageData.length && !cardShown.current) {
+//             cardShown.current = true;
+//             setTimeout(() => setShowCard(true), 600);
+//         }
+//     }, [loadedIndexes, imageData]);
+
+//     return (
+//         <div style={styles.container}>
+//             <Confetti width={width} height={height} numberOfPieces={200} recycle gravity={0.1} />
+
+//             {imageData.map((img, i) => (
+//                 <img
+//                     key={i}
+//                     src={img.src}
+//                     loading="lazy"
+//                     onLoad={() => setLoadedIndexes(prev => new Set(prev).add(i))}
+//                     style={{
+//                         ...img.style,
+//                         position: "absolute",
+//                         opacity: loadedIndexes.has(i) ? 0.45 : 0,
+//                         transition: "opacity 1s ease",
+//                         pointerEvents: "none",
+//                         zIndex: 1
+//                     }}
+//                 />
+//             ))}
+
+//             {showCard && (
+//                 <div style={{ ...styles.cardWrapper, opacity: showCard ? 1 : 0 }}>
+//                     <Card bordered={false} style={styles.card}>
+//                         <Title level={1}>💍</Title>
+//                         <Title level={2}>Benimle evlenir misin?</Title>
+//                         <Button type="primary" size="large">Evet (bir zahmet)</Button>
+//                         <Paragraph><br /></Paragraph>
+//                         <Paragraph>*Hayır için bir seçenek sunmadım maalesef</Paragraph>
+//                     </Card>
+//                 </div>
+//             )}
+//         </div>
+//     );
+// }
+
+// const styles = {
+//     container: {
+//         position: "relative",
+//         height: "100vh",
+//         width: "100%",
+//         overflow: "hidden",
+//         backgroundColor: "#fffbec",
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         padding: "1rem",
+//         boxSizing: "border-box"
+//     },
+//     cardWrapper: {
+//         zIndex: 2,
+//         transition: "opacity 1s ease"
+//     },
+//     card: {
+//         maxWidth: 400,
+//         width: "100%",
+//         textAlign: "center",
+//         backgroundColor: "#fffbe6",
+//         boxShadow: "0 8px 24px rgba(0,0,0,0.15)"
+//     }
+// };
+
+// export default SurpriseResult;
+
+
+
+
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Card, Typography, Button } from "antd";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 
 const { Title, Paragraph } = Typography;
 
-// Load fewer images to reduce load pressure
-const collageImages = [
-    "/my-test/images-webp/1.webp",
-    "/my-test/images-webp/2.webp",
-    "/my-test/images-webp/3.webp",
-    "/my-test/images-webp/4.webp",
-    "/my-test/images-webp/5.webp",
-    "/my-test/images-webp/6.webp",
-    "/my-test/images-webp/7.webp",
-    "/my-test/images-webp/8.webp"
-];
+const collageImages = Array.from({ length: 8 }, (_, i) =>
+    `${process.env.PUBLIC_URL}/images-webp/${i + 1}.webp`
+);
 
+const MAX_IMAGES = 6;
 
-
-
-function SurpriseResult() {
+const SurpriseResult = () => {
     const [showCard, setShowCard] = useState(false);
     const [loadedIndexes, setLoadedIndexes] = useState(new Set());
     const [imageData, setImageData] = useState([]);
     const { width, height } = useWindowSize();
     const cardShown = useRef(false);
 
-    useEffect(() => {
-        // Position images without overlap in limited set
+    const generateImageData = useCallback(() => {
+        if (typeof window === "undefined") return;
+
         const containerW = window.innerWidth - 32;
         const containerH = window.innerHeight - 32;
+        const images = [...collageImages].sort(() => Math.random() - 0.5);
+        const placedRects = [];
+        const styles = [];
 
-        const imgs = [...collageImages].sort(() => 0.5 - Math.random());
-        const placed = [], styles = [];
+        for (let src of images) {
+            if (styles.length >= MAX_IMAGES) break;
 
-        imgs.forEach((src, index) => {
-            if (styles.length >= 6) return; // max 6 images
+            let attempt = 0;
+            const w = 40 + Math.random() * 60;
+            const h = w;
 
-            let attempt = 0, topPx, leftPx;
-            const w = 40 + Math.random() * 60, h = w;
+            while (attempt < 50) {
+                const top = Math.random() * (containerH - h);
+                const left = Math.random() * (containerW - w);
 
-            do {
-                topPx = Math.random() * (containerH - h);
-                leftPx = Math.random() * (containerW - w);
-                const rect = { top: topPx, left: leftPx, width: w, height: h };
-                const overlap = placed.some(r =>
-                    !(
-                        r.left + r.width + 10 < rect.left ||
-                        r.left > rect.left + rect.width + 10 ||
-                        r.top + r.height + 10 < rect.top ||
-                        r.top > rect.top + rect.height + 10
-                    )
-                );
-                if (!overlap) {
-                    placed.push(rect);
+                const newRect = { top, left, width: w, height: h };
+
+                const overlaps = placedRects.some((r) => {
+                    return !(
+                        r.left + r.width + 10 < newRect.left ||
+                        r.left > newRect.left + newRect.width + 10 ||
+                        r.top + r.height + 10 < newRect.top ||
+                        r.top > newRect.top + newRect.height + 10
+                    );
+                });
+
+                if (!overlaps) {
+                    placedRects.push(newRect);
                     styles.push({
                         src,
                         style: {
-                            top: `${(topPx / containerH) * 100}%`,
-                            left: `${(leftPx / containerW) * 100}%`,
+                            top: `${(top / containerH) * 100}%`,
+                            left: `${(left / containerW) * 100}%`,
                             width: `${w}px`,
-                            transform: `rotate(${Math.random() * 20 - 10}deg)`
-                        }
+                            transform: `rotate(${Math.random() * 20 - 10}deg)`,
+                        },
                     });
                     break;
                 }
+
                 attempt++;
-            } while (attempt < 50);
-        });
+            }
+        }
 
         setImageData(styles);
     }, []);
 
     useEffect(() => {
-        if (imageData.length > 0 && loadedIndexes.size === imageData.length && !cardShown.current) {
+        generateImageData();
+    }, [generateImageData]);
+
+    useEffect(() => {
+        if (
+            imageData.length > 0 &&
+            loadedIndexes.size === imageData.length &&
+            !cardShown.current
+        ) {
             cardShown.current = true;
             setTimeout(() => setShowCard(true), 600);
         }
     }, [loadedIndexes, imageData]);
+
+    const handleImageLoad = useCallback(
+        (index) => {
+            setLoadedIndexes((prev) => new Set(prev).add(index));
+        },
+        [setLoadedIndexes]
+    );
 
     return (
         <div style={styles.container}>
@@ -631,15 +791,16 @@ function SurpriseResult() {
                 <img
                     key={i}
                     src={img.src}
+                    alt={`Surprise collage ${i + 1}`}
                     loading="lazy"
-                    onLoad={() => setLoadedIndexes(prev => new Set(prev).add(i))}
+                    onLoad={() => handleImageLoad(i)}
                     style={{
                         ...img.style,
                         position: "absolute",
                         opacity: loadedIndexes.has(i) ? 0.45 : 0,
                         transition: "opacity 1s ease",
                         pointerEvents: "none",
-                        zIndex: 1
+                        zIndex: 1,
                     }}
                 />
             ))}
@@ -649,7 +810,9 @@ function SurpriseResult() {
                     <Card bordered={false} style={styles.card}>
                         <Title level={1}>💍</Title>
                         <Title level={2}>Benimle evlenir misin?</Title>
-                        <Button type="primary" size="large">Evet (bir zahmet)</Button>
+                        <Button type="primary" size="large">
+                            Evet (bir zahmet)
+                        </Button>
                         <Paragraph><br /></Paragraph>
                         <Paragraph>*Hayır için bir seçenek sunmadım maalesef</Paragraph>
                     </Card>
@@ -657,7 +820,7 @@ function SurpriseResult() {
             )}
         </div>
     );
-}
+};
 
 const styles = {
     container: {
@@ -670,19 +833,19 @@ const styles = {
         alignItems: "center",
         justifyContent: "center",
         padding: "1rem",
-        boxSizing: "border-box"
+        boxSizing: "border-box",
     },
     cardWrapper: {
         zIndex: 2,
-        transition: "opacity 1s ease"
+        transition: "opacity 1s ease",
     },
     card: {
         maxWidth: 400,
         width: "100%",
         textAlign: "center",
         backgroundColor: "#fffbe6",
-        boxShadow: "0 8px 24px rgba(0,0,0,0.15)"
-    }
+        boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+    },
 };
 
 export default SurpriseResult;
