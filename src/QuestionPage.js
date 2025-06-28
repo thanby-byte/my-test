@@ -7,7 +7,7 @@ function QuestionPage({ questionData, onAnswer, currentIndex, total }) {
 
     return (
         <div style={{ padding: "2rem", fontFamily: "Arial", maxWidth: 600, margin: "0 auto" }}>
-            <Progress percent={progressValue} showInfo={false} style={{ marginBottom: "1rem" }} />
+            <Progress percent={progressValue} showInfo={true} style={{ marginBottom: "1rem" }} />
             <Title level={3}>Question {currentIndex + 1} of {total}</Title>
             <Paragraph>{questionData.question}</Paragraph>
             <Space direction="vertical" style={{ width: "100%" }}>
@@ -17,7 +17,7 @@ function QuestionPage({ questionData, onAnswer, currentIndex, total }) {
                         type="primary"
                         block
                         onClick={() => onAnswer(option)}
-                        style={{ marginTop: 8 }}
+                        style={{ marginTop: 14 }}
                     >
                         {option}
                     </Button>
