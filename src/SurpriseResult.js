@@ -490,7 +490,7 @@ function SurpriseResult() {
             <Confetti
                 width={width}
                 height={height}
-                numberOfPieces={250}
+                numberOfPieces={200}
                 recycle={true}
                 gravity={0.1}
             />
