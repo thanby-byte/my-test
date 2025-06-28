@@ -7,22 +7,22 @@
 // const { Title, Paragraph } = Typography;
 
 // const collageImages = [
-//     "/images-webp/1.webp",
-//     "/images-webp/2.webp",
-//     "/images-webp/3.webp",
-//     "/images-webp/4.webp",
-//     "/images-webp/5.webp",
-//     "/images-webp/6.webp",
-//     "/images-webp/7.webp",
-//     "/images-webp/8.webp",
-//     "/images-webp/9.webp",
-//     "/images-webp/10.webp",
-//     "/images-webp/11.webp",
-//     "/images-webp/12.webp",
-//     "/images-webp/13.webp",
-//     "/images-webp/14.webp",
-//     "/images-webp/15.webp",
-//     "/images-webp/16.webp"
+//     "/my-test/images-webp/1.webp",
+//     "/my-test/images-webp/2.webp",
+//     "/my-test/images-webp/3.webp",
+//     "/my-test/images-webp/4.webp",
+//     "/my-test/images-webp/5.webp",
+//     "/my-test/images-webp/6.webp",
+//     "/my-test/images-webp/7.webp",
+//     "/my-test/images-webp/8.webp",
+//     "/my-test/images-webp/9.webp",
+//     "/my-test/images-webp/10.webp",
+//     "/my-test/images-webp/11.webp",
+//     "/my-test/images-webp/12.webp",
+//     "/my-test/images-webp/13.webp",
+//     "/my-test/images-webp/14.webp",
+//     "/my-test/images-webp/15.webp",
+//     "/my-test/images-webp/16.webp"
 // ];
 
 
@@ -124,10 +124,10 @@
 
 // // All images
 // const allCollageImages = [
-//     "/images-webp/1.webp", "/images-webp/2.webp", "/images-webp/3.webp", "/images-webp/4.webp",
-//     "/images-webp/5.webp", "/images-webp/6.webp", "/images-webp/7.webp", "/images-webp/8.webp",
-//     "/images-webp/9.webp", "/images-webp/10.webp", "/images-webp/11.webp", "/images-webp/12.webp",
-//     "/images-webp/13.webp", "/images-webp/14.webp", "/images-webp/15.webp", "/images-webp/16.webp"
+//     "/my-test/images-webp/1.webp", "/my-test/images-webp/2.webp", "/my-test/images-webp/3.webp", "/my-test/images-webp/4.webp",
+//     "/my-test/images-webp/5.webp", "/my-test/images-webp/6.webp", "/my-test/images-webp/7.webp", "/my-test/images-webp/8.webp",
+//     "/my-test/images-webp/9.webp", "/my-test/images-webp/10.webp", "/my-test/images-webp/11.webp", "/my-test/images-webp/12.webp",
+//     "/my-test/images-webp/13.webp", "/my-test/images-webp/14.webp", "/my-test/images-webp/15.webp", "/my-test/images-webp/16.webp"
 // ];
 
 // function SurpriseResult() {
@@ -244,10 +244,10 @@
 // const { Title, Paragraph } = Typography;
 
 // const collageImages = [
-//     "/images-webp/1.webp", "/images-webp/2.webp", "/images-webp/3.webp", "/images-webp/4.webp",
-//     "/images-webp/5.webp", "/images-webp/6.webp", "/images-webp/7.webp", "/images-webp/8.webp",
-//     "/images-webp/9.webp", "/images-webp/10.webp", "/images-webp/11.webp", "/images-webp/12.webp",
-//     "/images-webp/13.webp", "/images-webp/14.webp", "/images-webp/15.webp", "/images-webp/16.webp"
+//     "/my-test/images-webp/1.webp", "/my-test/images-webp/2.webp", "/my-test/images-webp/3.webp", "/my-test/images-webp/4.webp",
+//     "/my-test/images-webp/5.webp", "/my-test/images-webp/6.webp", "/my-test/images-webp/7.webp", "/my-test/images-webp/8.webp",
+//     "/my-test/images-webp/9.webp", "/my-test/images-webp/10.webp", "/my-test/images-webp/11.webp", "/my-test/images-webp/12.webp",
+//     "/my-test/images-webp/13.webp", "/my-test/images-webp/14.webp", "/my-test/images-webp/15.webp", "/my-test/images-webp/16.webp"
 // ];
 
 // function SurpriseResult() {
@@ -373,10 +373,10 @@ import { useWindowSize } from "react-use";
 const { Title, Paragraph } = Typography;
 
 const collageImages = [
-    "/images-webp/1.webp", "/images-webp/2.webp", "/images-webp/3.webp", "/images-webp/4.webp",
-    "/images-webp/5.webp", "/images-webp/6.webp", "/images-webp/7.webp", "/images-webp/8.webp",
-    "/images-webp/9.webp", "/images-webp/10.webp", "/images-webp/11.webp", "/images-webp/12.webp",
-    "/images-webp/13.webp", "/images-webp/14.webp", "/images-webp/15.webp", "/images-webp/16.webp"
+    "/my-test/images-webp/1.webp", "/my-test/images-webp/2.webp", "/my-test/images-webp/3.webp", "/my-test/images-webp/4.webp",
+    "/my-test/images-webp/5.webp", "/my-test/images-webp/6.webp", "/my-test/images-webp/7.webp", "/my-test/images-webp/8.webp",
+    "/my-test/images-webp/9.webp", "/my-test/images-webp/10.webp", "/my-test/images-webp/11.webp", "/my-test/images-webp/12.webp",
+    "/my-test/images-webp/13.webp", "/my-test/images-webp/14.webp", "/my-test/images-webp/15.webp", "/my-test/images-webp/16.webp"
 ];
 
 function SurpriseResult() {
