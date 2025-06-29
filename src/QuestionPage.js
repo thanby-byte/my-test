@@ -10,6 +10,9 @@ function QuestionPage({ questionData, onAnswer, currentIndex, total }) {
             <Progress percent={progressValue} showInfo={true} style={{ marginBottom: "1rem" }} />
             <Title level={3}>Question {currentIndex + 1} of {total}</Title>
             <Paragraph>{questionData.question}</Paragraph>
+            <Paragraph><br /></Paragraph>
+            <Paragraph><br /></Paragraph>
+            <Paragraph><br /></Paragraph>
             <Space direction="vertical" style={{ width: "100%" }}>
                 {questionData.options.map((option, idx) => (
                     <Button

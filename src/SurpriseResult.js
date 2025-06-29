@@ -11,7 +11,8 @@ const collageImages = Array.from({ length: 19 }, (_, i) =>
     `${process.env.PUBLIC_URL}/images-webp/${i + 1}.webp`
 );
 
-const MAX_IMAGES = 19;
+
+const MAX_IMAGES = 25;
 const IMAGE_LOAD_DELAY = 200; // Delay in ms between loading each image
 
 const SurpriseResult = () => {
@@ -45,7 +46,7 @@ const SurpriseResult = () => {
             if (styles.length >= MAX_IMAGES) break;
 
             let attempt = 0;
-            const w = 60 + Math.random() * 40;
+            const w = 60 + 30;
             const h = w;
 
             while (attempt < 200) {
@@ -57,19 +58,19 @@ const SurpriseResult = () => {
                 // Check overlap with other images (with 8px margin)
                 const overlapsImages = placedRects.some((r) => {
                     return !(
-                        r.left + r.width + 19 < newRect.left ||
-                        r.left > newRect.left + newRect.width + 19 ||
-                        r.top + r.height + 19 < newRect.top ||
-                        r.top > newRect.top + newRect.height + 19
+                        r.left + r.width + 8 < newRect.left ||
+                        r.left > newRect.left + newRect.width + 8 ||
+                        r.top + r.height + 8 < newRect.top ||
+                        r.top > newRect.top + newRect.height + 8
                     );
                 });
 
                 // Check overlap with card area (with 8px margin)
                 const overlapsCard = !(
-                    newRect.left + newRect.width + 19 < cardLeft ||
-                    newRect.left > cardRight + 19 ||
-                    newRect.top + newRect.height + 19 < cardTop ||
-                    newRect.top > cardBottom + 19
+                    newRect.left + newRect.width + 8 < cardLeft ||
+                    newRect.left > cardRight + 8 ||
+                    newRect.top + newRect.height + 8 < cardTop ||
+                    newRect.top > cardBottom + 8
                 );
 
                 if (!overlapsImages && !overlapsCard) {
@@ -131,24 +132,15 @@ const SurpriseResult = () => {
 
     return (
         <div style={styles.container} ref={containerRef}>
-            {/* You can re-enable the Confetti component if desired */}
-            {/* {width > 400 && height > 500 && showCard && (
-                <Confetti
-                    width={width}
-                    height={height}
-                    numberOfPieces={120}
-                    recycle={false}
-                    gravity={0.02}
-                    run={true}
-                />
-            )} */}
+
 
             <Confetti
                 width={width}
                 height={height}
                 numberOfPieces={120}
                 recycle={true}
-                gravity={0.05}
+                gravity={0.10}
+                friction={0.99}
             // run={true}
             />
 
@@ -165,8 +157,8 @@ const SurpriseResult = () => {
                         opacity: imagesToLoad.includes(i) ? 0.85 : 0,
                         transition: "opacity 0.8s ease",
                         pointerEvents: "none",
-                        zIndex: 1,
-                        maxWidth: "25%",
+                        zIndex: 1
+                        //  maxWidth: "95%",
                     }}
                 />
             ))}
@@ -174,8 +166,8 @@ const SurpriseResult = () => {
             {showCard && (
                 <div style={{ ...styles.cardWrapper, opacity: showCard ? 1 : 0 }}>
                     <Card bordered={false} style={styles.card}>
-                        <Title level={1}>💍</Title>
-                        <Title level={2}>Benimle evlenir misin?</Title>
+                        <Title level={2} style={{ fontSize: "4rem", margin: 0 }}>💍</Title>
+                        <Title level={2} >Benimle evlenir misin?</Title>
                         <Button
                             style={{ ...styles.button }}
                             type="primary"
@@ -208,7 +200,7 @@ const styles = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "1rem",
+        padding: "0.5rem",
         boxSizing: "border-box",
         touchAction: "manipulation",
     },
